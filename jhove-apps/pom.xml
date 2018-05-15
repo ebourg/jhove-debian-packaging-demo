@@ -1,0 +1,105 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.openpreservation.jhove</groupId>
+    <artifactId>jhove</artifactId>
+    <version>1.20.0</version>
+  </parent>
+
+  <artifactId>jhove-apps</artifactId>
+  <packaging>jar</packaging>
+
+  <name>JHOVE Applications</name>
+  <description>Classes and fat JAR packaging for CLI and GUI app.</description>
+  <properties>
+    <build.directory.core>../jhove-core/target</build.directory.core>
+    <build.directory.modules>../jhove-modules/target</build.directory.modules>
+    <build.directory.apps>./target</build.directory.apps>
+    <classes.directory.core>../jhove-core/target/classes</classes.directory.core>
+    <classes.directory.modules>../jhove-modules/target/classes</classes.directory.modules>
+    <classes.directory.apps>./target/classes</classes.directory.apps>
+    <sources.directory.core>../jhove-core/src/main/java</sources.directory.core>
+    <sources.directory.modules>../jhove-modules/src/main/java</sources.directory.modules>
+    <sources.directory.apps>./src/main/java</sources.directory.apps>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>Jhove</mainClass>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <appendAssemblyId>false</appendAssemblyId>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-assembly</id> <!-- this is used for inheritance merges -->
+            <phase>package</phase> <!-- bind to the packaging phase -->
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.openpreservation.jhove</groupId>
+      <artifactId>jhove-core</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.openpreservation.jhove</groupId>
+      <artifactId>jhove-modules</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+    </dependency>
+  </dependencies>
+
+  <profiles>
+    <profile>
+      <id>jacoco-aggregate</id>
+      <activation>
+        <property>
+          <name>jacocoAgg</name>
+          <value>true</value>
+        </property>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>report</id>
+                <phase>test</phase>
+                <goals>
+                  <goal>report-aggregate</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+    </build>
+    </profile>
+  </profiles>
+
+</project>

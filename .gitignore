@@ -1,0 +1,18 @@
+# Ignore Maven artefacts
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.next
+release.properties
+**/pom.xml.versionsBackup
+
+# Ignore GH Pages Gemfile
+Gemfile.lock
+
+# Ignore Test Root
+/test-root/
+
+# Ignore Eclipse artefacts
+**/.settings
+**/.project
+**/.classpath

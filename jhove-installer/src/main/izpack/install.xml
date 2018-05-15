@@ -1,0 +1,92 @@
+<izpack:installation version="5.0" xmlns:izpack="http://izpack.org/schema/installation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://izpack.org/schema/installation http://izpack.org/schema/5.0/izpack-installation-5.0.xsd">
+
+  <info>
+    <appname>JHOVE</appname>
+    <appversion>${project.version}</appversion>
+    <appsubpath>jhove</appsubpath>
+    <url>http://jhove.openpreservation.org</url>
+    <javaversion>${java.target.version}</javaversion>
+    <authors>
+      <author name="Carl Wilson" email="carl@openpreservation.org" />
+    </authors>
+  </info>
+
+  <guiprefs height="400" resizable="no" width="640">
+    <modifier key="useButtonIcons" value="yes"/>
+    <modifier key="useLabelIcons" value="no"/>
+    <modifier key="labelGap" value="2"/>
+    <modifier key="layoutAnchor" value="NORTHWEST"/>
+    <modifier key="useHeadingPanel" value="no"/>
+    <modifier key="headingImageOnLeft" value="yes"/>
+    <modifier key="headingLineCount" value="1"/>
+    <modifier key="headingFontSize" value="1.5"/>
+    <modifier key="headingBackgroundColor" value="0x00ffffff"/>
+    <modifier key="headingPanelCounter" value="progressbar"/>
+    <modifier key="headingPanelCounterPos" value="inNavigationPanel"/>
+  </guiprefs>
+
+  <locale>
+    <langpack iso3="eng" />
+  </locale>
+
+  <resources>
+    <res id="customicons.xml" src="customicons.xml" />
+    <res id="HTMLInfoPanel.welcome" src="welcome.html"/>
+    <res id="JFrameIcon" src="icon.png"/>
+    <res id="OPFLogo" src="jhovelogo.png"/>
+  </resources>
+
+  <variables>
+    <variable name="InstallerFrame.logfilePath" value="Default"/>
+    <variable name="VERSION" value="v ${project.version}"/>
+    <variable name="BUILD_DATE" value="Built ${jhove.timestamp}"/>
+    <variable name="TargetPanel.dir" value="$USER_HOME/jhove"/>
+  </variables>
+
+  <panels>
+    <!-- FIXME why doesn't HTMLHelloPanel work any more?  it is nice not to have the "Please read the following information" text ... -->
+    <panel classname="HTMLInfoPanel" id="welcome"/>
+    <panel classname="TargetPanel" id="install_dir"/>
+    <panel classname="PacksPanel" id="sdk_pack_select"/>
+    <panel classname="InstallPanel" id="install"/>
+    <panel classname="FinishPanel" id="finish"/>
+  </panels>
+
+
+  <packs>
+    <pack name="JHOVE Application" required="yes">
+      <description>JHOVE application JARs including the internal modules and configuration files.</description>
+      <file targetdir="$INSTALL_PATH/bin" src="bin/jhove-apps-${project.version}.jar"/>
+      <executable targetfile="$INSTALL_PATH/bin/jhove-apps-${project.version}.jar"/>
+      <file targetdir="$INSTALL_PATH/conf"  override="true" src="config/jhove.conf"/>
+      <parsable targetfile="$INSTALL_PATH/conf/jhove.conf" type="xml"/>
+      <updatecheck>
+        <include name="bin/**" />
+      </updatecheck>
+    </pack>
+    <pack name="JHOVE Shell Scripts" required="yes">
+      <os family="unix"/>
+      <description>Bash execution scripts for command-line and GUI apps.</description>
+      <file targetdir="$INSTALL_PATH" override="true" src="scripts/jhove"/>
+      <executable targetfile="$INSTALL_PATH/jhove"/>
+      <file targetdir="$INSTALL_PATH" override="true" src="scripts/jhove-gui"/>
+      <executable targetfile="$INSTALL_PATH/jhove-gui"/>
+    </pack>
+    <pack name="JHOVE Batch Scripts" required="yes">
+      <os family="windows"/>
+      <description>DOS batch execution scripts for command-line and GUI apps.</description>
+      <file targetdir="$INSTALL_PATH" override="true" src="scripts/jhove.bat"/>
+      <executable targetfile="$INSTALL_PATH/jhove.bat"/>
+      <file targetdir="$INSTALL_PATH" override="true" src="scripts/jhove-gui.bat"/>
+      <executable targetfile="$INSTALL_PATH/jhove-gui.bat"/>
+    </pack>
+    <pack name="JHOVE External Modules" required="no">
+      <description>Third-party validation modules developed for JHOVE, currently GZIP, PNG and WARC.</description>
+      <file targetdir="$INSTALL_PATH/bin" src="bin/jhove-ext-modules-${project.version}.jar"/>
+      <executable targetfile="$INSTALL_PATH/bin/jhove-ext-modules-${project.version}.jar"/>
+      <file targetdir="$INSTALL_PATH/conf" override="true" src="config/ext-modules/jhove.conf"/>
+      <parsable targetfile="$INSTALL_PATH/conf/jhove.conf" type="xml"/>
+    </pack>
+  </packs>
+</izpack:installation>
