@@ -1,0 +1,29 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: JHOVE - JSTOR/Harvard Object Validation Environment
+Upstream-Contact: http://jenkins.opf-labs.org
+Source: https://github.com/openpreserve/jhove/
+
+Files: *
+Copyright: 2008-2018, The Open Preservation Foundation
+License: BSD or LGPL-2 or LGPL-2.1
+
+Files: debian/*
+Copyright: 2018, Emmanuel Bourg <ebourg@apache.org>
+License: Apache-2.0
+
+License: Apache-2.0
+ On Debian systems, the full text of the Apache-2.0 license
+ can be found in the file '/usr/share/common-licenses/Apache-2.0'
+
+License: BSD
+  TODO: include the full text of the license here
+
+License: LGPL-2
+ On Debian systems, the full text of the LGPL-2 license
+ can be found in the file '/usr/share/common-licenses/LGPL-2'
+
+License: LGPL-2.1
+ On Debian systems, the full text of the LGPL-2.1 license
+ can be found in the file '/usr/share/common-licenses/LGPL-2.1'
+
+

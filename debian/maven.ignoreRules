@@ -1,0 +1,16 @@
+
+org.openpreservation.jhove jhove-apps jar * * *
+org.openpreservation.jhove jhove-ext-modules jar * * *
+org.openpreservation.jhove jhove-installer jar * * *
+org.openpreservation.jhove jhove-modules jar * * *
+junit junit * * * *
+nl.jqno.equalsverifier equalsverifier * * * *
+org.apache.maven.plugins maven-assembly-plugin * * * *
+org.apache.maven.plugins maven-deploy-plugin * * * *
+org.apache.maven.plugins maven-gpg-plugin * * * *
+org.apache.maven.plugins maven-javadoc-plugin * * * *
+org.apache.maven.plugins maven-release-plugin * * * *
+org.apache.maven.plugins maven-site-plugin * * * *
+org.apache.maven.plugins maven-source-plugin * * * *
+org.apache.maven.plugins maven-surefire-plugin * * * *
+org.jacoco jacoco-maven-plugin * * * *

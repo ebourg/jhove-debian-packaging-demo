@@ -1,0 +1,58 @@
+--- a/jhove-core/src/main/java/edu/harvard/hul/ois/jhove/handler/XmlHandler.java
++++ b/jhove-core/src/main/java/edu/harvard/hul/ois/jhove/handler/XmlHandler.java
+@@ -161,7 +161,7 @@
+ 	    _writer.println (margn2 + elementStart ("modules"));
+         Iterator iter = _je.getModuleMap ().keySet ().iterator ();
+         while (iter.hasNext ()) {
+-            Module module = _je.getModule ((String) iter.next ());
++            edu.harvard.hul.ois.jhove.Module module = _je.getModule ((String) iter.next ());
+ 	        String [][] attr2 = { {"release", module.getRelease ()} };
+             _writer.println (margn3 + element ("module", attr2,
+ 					       module.getName ()));
+@@ -224,7 +224,7 @@
+     /**
+      *  Outputs information about a Module
+      */
+-    public void show (Module module)
++    public void show (edu.harvard.hul.ois.jhove.Module module)
+     {
+         String margin = getIndent (++_level);
+         String margn2 = margin + " ";
+@@ -322,7 +322,7 @@
+         String margn2 = margin + " ";
+         String margn3 = margn2 + " ";
+ 
+-        Module module = info.getModule ();
++        edu.harvard.hul.ois.jhove.Module module = info.getModule ();
+         _logger.info ("Reporting RepInfo");
+         if (_je.getSignatureFlag ()) {
+             _logger.info ("Checking signatures only");
+--- a/jhove-core/src/main/java/edu/harvard/hul/ois/jhove/handler/TextHandler.java
++++ b/jhove-core/src/main/java/edu/harvard/hul/ois/jhove/handler/TextHandler.java
+@@ -121,7 +121,7 @@
+ 	_writer.println (margin + " BufferSize: " + _je.getBufferSize ());
+         Iterator iter = _je.getModuleMap ().keySet ().iterator ();
+         while (iter.hasNext ()) {
+-            Module module = _je.getModule ((String) iter.next ());
++            edu.harvard.hul.ois.jhove.Module module = _je.getModule ((String) iter.next ());
+             _writer.println (margin + " Module: " + module.getName () + " " +
+ 			     module.getRelease ());
+         }
+@@ -173,7 +173,7 @@
+     /**
+      *  Outputs information about a Module
+      */
+-    public void show (Module module)
++    public void show (edu.harvard.hul.ois.jhove.Module module)
+     {
+         String margin = getIndent (++_level);
+ 
+@@ -251,7 +251,7 @@
+     {
+         String margin = getIndent (++_level);
+ 
+-        Module module = info.getModule ();
++        edu.harvard.hul.ois.jhove.Module module = info.getModule ();
+         _writer.println (margin + "RepresentationInformation: " +
+                          info.getUri ());
+         if (module != null) {

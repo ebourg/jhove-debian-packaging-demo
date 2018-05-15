@@ -1,0 +1,3 @@
+
+org.openpreservation.jhove jhove-core jar s/.*/debian/ * *
+org.openpreservation.jhove jhove pom s/.*/debian/ * *

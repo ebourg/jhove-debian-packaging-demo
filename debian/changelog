@@ -1,0 +1,6 @@
+jhove (1.20.1-1) UNRELEASED; urgency=medium
+
+  * Initial release (Closes: #nnnn)  <nnnn is the bug number of your
+    ITP>
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Tue, 15 May 2018 15:35:06 +0200
